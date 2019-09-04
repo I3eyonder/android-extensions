@@ -9,7 +9,7 @@ def versionName = '1.0'
 def pkgRepoName = 'utilities'
 def pkgName = 'android-extensions'
 def pkgDesc = 'Android Utility Extensions Function'
-def pkgLicenses = ['MIT','Apache-2.0']
+def pkgLicenses = ['Apache-2.0']
 def gitUrl = 'https://github.com/hieupham1993/android-extensions.git'
 
 group = groupName
