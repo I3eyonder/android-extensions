@@ -5,6 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.MainThread
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 
 /**
  * Created by HieuPT on 9/4/2019.
@@ -44,3 +49,8 @@ fun Activity.showSoftInput(view: View) {
         imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
     }
 }
+
+@MainThread
+inline fun <reified VM : ViewModel> FragmentActivity.viewModels(
+    noinline factoryProducer: (() -> ViewModelProvider.Factory)? = null
+) = lazy { ViewModelProviders.of(this, factoryProducer?.invoke())[VM::class.java] }
